@@ -107,5 +107,5 @@ string ReadFile(string FILEPATH) {
 int main() {
     string LOCATION = "C:\\Users\\smbla\\Desktop\\saad.txt";
     cout << CTRCrypt(ReadFile(LOCATION)) << endl;
-    //CTRCrypt("Hello");
+
 }
