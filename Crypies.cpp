@@ -24,7 +24,9 @@ void InitKey(byte* key, size_t size) {
     for (size_t i = 0; i < size; ++i) {
         key[i] = rand();
     }
-}/*
+}
+
+/*
 string Base64CryptIvKey(byte key, byte iv) {
     Base64Encoder encoder;
     encoder.Put(key, sizeof(key));
@@ -36,7 +38,9 @@ string Base64CryptIvKey(byte key, byte iv) {
         key.resize(size);
         encoder.Get((byte*)&key[0], key.size());
     }
-}*/
+}
+*/
+
 string CTRCrypt(string plainText){
     //Initialize common key and IV with appropriate values
     byte key[32];
@@ -55,10 +59,11 @@ string CTRCrypt(string plainText){
     encFilter.Put(reinterpret_cast<const byte*>(plainText.c_str()), plainText.size());
     encFilter.MessageEnd();
 
-   // return encText;
+    return encText;
     
 
 }
+
 /*
 void CTRDecrypt(string Cipher, byte Key[32], byte iv[16]) {
     CryptoPP::CTR_Mode<CryptoPP::AES>::Decryption dec;
@@ -69,11 +74,14 @@ void CTRDecrypt(string Cipher, byte Key[32], byte iv[16]) {
     decFilter.MessageEnd();
 
     cout << "Decrypted Text : " << decText << endl;
-}*/
+}
+*/
+
 string OPFile(string FILENAME) {
     string CFILE = FILENAME + ".nice";
     return CFILE;
 }
+
 string ReadFile(string FILEPATH) {
     string file;
     ifstream inFile;
@@ -95,6 +103,7 @@ string ReadFile(string FILEPATH) {
     return file;
 
 }
+
 int main() {
     string LOCATION = "C:\\Users\\smbla\\Desktop\\saad.txt";
     cout << CTRCrypt(ReadFile(LOCATION)) << endl;
